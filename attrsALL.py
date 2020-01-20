@@ -1,3 +1,15 @@
+'''*************************************************************************
+  FileName     [ attrsALL.py ]
+  Synopsis     [ Generate macro analysis files from raw reddit entries (ALL) ]
+  Author       [ Chan-Jan(Jeff) Hsu ]
+  Copyright    [ Copyleft(c) 2020]
+****************************************************************************
+  Input		   RS-*.json : raw corpus (all reddit)
+  Output	   macro.json : statistic info of raw corpus (all reddit)
+  			   corpus_title.json : target corpus with only title (all reddit)
+  			   corpus_body.json : target corpus with only body (all reddit)
+  Dependencies Download and extract files from pullshift.io
+*************************************************************************'''
 import json
 import datetime
 import sys
@@ -5,7 +17,7 @@ import os
 import nltk
 from nltk.tokenize import word_tokenize as tokenize
 
-files = [f for f in os.listdir('../Reddit_Data/raw') if "RS" in f and "TRS" not in f and f >= "RS_2019-04"]
+files = [f for f in os.listdir('../Reddit_Data/raw') if "RS" in f and "TRS" not in f]# and f >= "RS_2019-04"]
 print("targets:",files)
 scores = []
 corpus_t = []

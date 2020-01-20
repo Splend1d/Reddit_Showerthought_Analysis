@@ -1,3 +1,13 @@
+'''*************************************************************************
+  FileName     [ plotcommon.py ]
+  Synopsis     [ plot graph of distribution of most common words ]
+  Author       [ Chan-Jan(Jeff) Hsu ]
+  Copyright    [ Copyleft(c) 2020]
+****************************************************************************
+  Input		   corpus_words_common_(int).json : staticstic of (int) most common corpus words 
+  Output	   common.png : x - normalized ith most common word, y - frequency of ith most common word 
+  Dependencies run parsewords.py first
+*************************************************************************'''
 import json
 import matplotlib.pyplot as plt
 import numpy as np

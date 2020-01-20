@@ -1,3 +1,14 @@
+'''*************************************************************************
+  FileName     [ parsewords.py ]
+  Synopsis     [ Generate macro analysis files from raw file ]
+  Author       [ Chan-Jan(Jeff) Hsu ]
+  Copyright    [ Copyleft(c) 2020]
+****************************************************************************
+  Input		   corpus.json : target corpus with only words 
+  Output	   corpus_words.json : staticstic of corpus words.
+  			   corpus_words_common_(int).json : staticstic of (int) most common corpus words
+  Dependencies run genmacro.py first
+*************************************************************************'''
 import os
 import json
 from nltk.corpus import stopwords

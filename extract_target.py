@@ -1,3 +1,13 @@
+'''*************************************************************************
+  FileName     [ extract_target.py ]
+  Synopsis     [ extract target corpus from ALL corpus ]
+  Author       [ Chan-Jan(Jeff) Hsu ]
+  Copyright    [ Copyleft(c) 2020]
+****************************************************************************
+  Input		   RS-*.json : raw corpus (all reddit)
+  Output	   TRS-*.json : target raw corpus (r/showerthoughts)
+  Dependencies Download and extract files from pullshift.io
+*************************************************************************'''
 import json
 import os 
 to_do_files = [f for f in os.listdir('./raw') if os.path.isfile(f) and "RS" in f and "TRS" not in f]

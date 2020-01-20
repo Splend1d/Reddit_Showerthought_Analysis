@@ -1,3 +1,15 @@
+'''*************************************************************************
+  FileName     [ genmacro.py ]
+  Synopsis     [ Generate macro analysis files from raw file ]
+  Author       [ Chan-Jan(Jeff) Hsu ]
+  Copyright    [ Copyleft(c) 2020]
+****************************************************************************
+  Input		   TRS-*.json : target raw corpus (r/showerthoughts)
+  Output	   macro.json : statistic info of raw corpus 
+  			   corpus.json : target corpus with only words
+  			   corpus_w_info.json : target corpus with words and essential attributes
+  Dependencies run extract_target.py first
+*************************************************************************'''
 import json
 import datetime
 import sys

@@ -1,3 +1,17 @@
+'''*************************************************************************
+  FileName     [ genliked.py ]
+  Synopsis     [ Generate macro analysis files from raw file that are praised ]
+  Author       [ Chan-Jan(Jeff) Hsu ]
+  Copyright    [ Copyleft(c) 2020]
+****************************************************************************
+  Input		   corpus_w_info.json : target raw corpus (r/showerthoughts)
+  Output	   macro_ups.json : statistic info of raw corpus that are praised
+  			   macro_awards.json : statistic info of raw corpus that have awards
+  			   corpus_ups.json : target corpus that are praised with only words 
+  			   corpus_downs.json : target corpus that are not praised with only words
+  			   corpus_awards.json : target corpus that are awarded with only words
+  Dependencies run genmacro.py first
+*************************************************************************'''
 import json
 from nltk.tokenize import word_tokenize as tokenize
 from nltk.corpus import stopwords
@@ -43,12 +57,12 @@ for e in entries:
 			break
 
 	if score >= 64:
-		upentries.append(score)
+		upentries.append(entry)
 		total_score[0] += score
 		total_words[0] += len(entry)
 		distribution_words[0][len(entry)] += 1
 	elif score < 64:
-		downentries.append(score)
+		downentries.append(entry)
 
 with open("./data/corpus_ups.json","w") as f:
 	json.dump(upentries,f)
