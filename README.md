@@ -4,6 +4,5 @@
 ## To extract files:  
 ### .zst  
 on bash, type - ztsd -d [file] -o [dir+file]  
-### .bz2  
-### .xz  
+### .bz2 .xz  
 use 7zip extractor  
