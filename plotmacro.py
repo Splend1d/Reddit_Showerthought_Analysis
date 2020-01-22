@@ -24,7 +24,7 @@ for n in _name:
 			xs.append(i)
 			ys.append(macro["distribution_title_length"][str(i)])
 		plt.bar(xs,ys, color = "blue")
-		plt.savefig('./attrs/word_distribution'+n+'.png', bbox_inches='tight')
+		plt.savefig('./attrs/length_distribution'+n+'.png', bbox_inches='tight')
 		plt.show()
 	if "distribution_upvotes" in macro:
 		xs = []

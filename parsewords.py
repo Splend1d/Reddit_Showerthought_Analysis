@@ -1,6 +1,6 @@
 '''*************************************************************************
   FileName     [ parsewords.py ]
-  Synopsis     [ Generate macro analysis files from raw file ]
+  Synopsis     [ perform word related parsing to target ]
   Author       [ Chan-Jan(Jeff) Hsu ]
   Copyright    [ Copyleft(c) 2020]
 ****************************************************************************
@@ -12,7 +12,16 @@
 import os
 import json
 from nltk.corpus import stopwords
+from nltk.corpus import wordnet as wn
+from nltk.stem.wordnet import WordNetLemmatizer
+from nltk import word_tokenize, pos_tag
+from collections import defaultdict
+_lmtzr = WordNetLemmatizer()
 _stop_words = set(stopwords.words('english'))
+_tag_map = defaultdict(lambda : wn.NOUN)
+_tag_map['J'] = wn.ADJ
+_tag_map['V'] = wn.VERB
+_tag_map['R'] = wn.ADV
 
 class word_parser:
 	def __init__(self,db):
@@ -38,13 +47,15 @@ class word_parser:
 	def get_freq(self):
 		print("getting freq")
 		for entry in self.db:
-			for word in entry:
+			lemmad_entry = [_lmtzr.lemmatize(token, _tag_map[tag[0]]) for token, tag in pos_tag(entry)]
+			#print(entry, lemmad_entry)
+			for word in lemmad_entry:
 				if word.isalpha():
 					try:
 						self.corpus_words[word.lower()] += 1
 					except:
 						self.corpus_words[word.lower()] = 1
-			for i in range(len(entry)):
+			for i in range(len(lemmad_entry)):
 				if entry[i].isalpha():
 					try:
 						self.corpus_sentence_start[entry[i].lower()] += 1
@@ -53,7 +64,7 @@ class word_parser:
 					finally:
 						break
 
-			for i in range(len(entry)-1,-1,-1):
+			for i in range(len(lemmad_entry)-1,-1,-1):
 				if entry[i].isalpha():
 					try:
 						self.corpus_sentence_end[entry[i].lower()] += 1
